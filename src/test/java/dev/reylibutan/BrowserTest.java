@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Sleeper;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -26,10 +27,14 @@ public class BrowserTest {
       WebElement firstResult = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.ladda-label")));
 
       // TODO: type email
-      // TODO: type password
-      // TODO: click login
+      driver.findElement(By.cssSelector("input[name=email]")).sendKeys("admin@phptravels.com");
+      driver.findElement(By.cssSelector("input[name=password]")).sendKeys("demoadmin");
+      driver.findElement(By.cssSelector("span.ladda-label")).click();
+
       // TODO: wait for page?
       // TODO: check page after login
+
+      Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(15));
     } catch (Exception e) {
       e.printStackTrace();
     } finally {
