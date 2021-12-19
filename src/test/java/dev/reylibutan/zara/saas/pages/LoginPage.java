@@ -9,6 +9,12 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClick
 public class LoginPage extends BaseZaraPage<LoginPage> {
   private final static String URL = "http://sdpw9071app.dpwah.com:18010/zodiac/core/auth";
 
+  @FindBy(css = "input[name=email]")
+  private WebElement userId;
+
+  @FindBy(css = "input[name=password]")
+  private WebElement password;
+
   @FindBy(css = "button[type=submit]")
   private WebElement loginBtn;
 
@@ -29,17 +35,14 @@ public class LoginPage extends BaseZaraPage<LoginPage> {
     }
   }
 
-  public void loginAsSiteUser(String siteCode) {
-
+  public void loginAsGlobalUser() {
+    userId.sendKeys("zarad11aa");
+    password.sendKeys("Welcome@1");
+    loginBtn.click();
   }
 
   @Override
   protected String getUrl() {
     return URL;
-  }
-
-  @Override
-  protected void isLoaded() throws Error {
-    isUrlLoaded();
   }
 }

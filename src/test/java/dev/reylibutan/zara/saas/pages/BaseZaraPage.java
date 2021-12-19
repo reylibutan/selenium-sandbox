@@ -31,6 +31,11 @@ public abstract class BaseZaraPage<T extends LoadableComponent<T>> extends Loada
     postLoad();
   }
 
+  @Override
+  protected void isLoaded() throws Error {
+    isUrlLoaded();
+  }
+
   public WebDriverWait waitForPage() {
     return waitForPage(DEFAULT_PAGE_LOAD_WAIT);
   }
